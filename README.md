@@ -20,3 +20,22 @@ $ yarn run start
 
 # watch mode
 $ yarn run start:dev
+```
+
+## Format Code
+
+```bash
+yarn format
+```
+
+## Swagger
+
+```bash
+# user
+heepoke
+```
+
+```bash
+#password
+usersHeepoke
+```
