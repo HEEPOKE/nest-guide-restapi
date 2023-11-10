@@ -20,8 +20,6 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, swaggerConfig.config);
 
-  app.use(['/apis/docs'], swaggerConfig.authenticate());
-
   SwaggerModule.setup('apis/docs', app, document, {
     swaggerOptions: {
       tagsSorter: 'alpha',

@@ -3,8 +3,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { AuthDto, RefreshTokenDto, VerifyTokenDto } from './dto/auth.dto';
 import { JwtAuthGuard } from './guards/jwtAccessGuard';
-import { StatusCodeModel } from 'src/constants/constant';
-import { AuthServiceConstant } from 'src/constants/authConstant';
+import { StatusCodeModel } from '../../../constants/constant';
+import { AuthServiceConstant } from '../../../constants/authConstant';
 
 @ApiTags('Auth')
 @Controller('auth')

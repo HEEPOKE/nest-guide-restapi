@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { AuthServiceConstant } from 'src/constants/authConstant';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { AuthServiceConstant } from '../../../../constants/authConstant';
 
 export class AuthDto {
   @ApiProperty({

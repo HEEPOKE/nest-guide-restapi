@@ -1,9 +1,9 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import config from 'src/config/config';
-import { RsaUtil } from 'src/utils/rsa';
 import { AuthDto } from './dto/auth.dto';
 import { AccountService } from '../account/account.service';
+import config from '../../../config/config';
+import { RsaUtil } from '../../../utils/rsa';
 
 @Injectable()
 export class AuthService {
