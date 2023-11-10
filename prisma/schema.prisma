@@ -9,9 +9,9 @@ datasource db {
 
 model Account {
   id        Int      @id @default(autoincrement())
-  prefix    String   @db.VarChar(255)
+  prefix    String?  @db.VarChar(255)
   email     String   @unique @db.VarChar(255)
-  username  String   @db.VarChar(255)
+  username  String?  @unique @db.VarChar(255)
   password  String?  @db.VarChar(255)
   tel       String?  @db.VarChar(255)
   createdAt DateTime @default(now())

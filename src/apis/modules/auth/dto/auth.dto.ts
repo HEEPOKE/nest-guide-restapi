@@ -12,15 +12,6 @@ export class AuthDto {
   email: string;
 
   @ApiProperty({
-    description: 'Username',
-    example: 'heepoke',
-    required: false,
-  })
-  @IsString()
-  @IsOptional()
-  username?: string;
-
-  @ApiProperty({
     description: 'Password',
     example: AuthServiceConstant.ENCRYPT_PASSWORD,
   })

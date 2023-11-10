@@ -3,12 +3,14 @@ import { JwtService } from '@nestjs/jwt';
 import config from 'src/config/config';
 import { RsaUtil } from 'src/utils/rsa';
 import { AuthDto } from './dto/auth.dto';
+import { AccountService } from '../account/account.service';
 
 @Injectable()
 export class AuthService {
   private readonly revokedTokens = new Set<string>();
   constructor(
     private jwtService: JwtService,
+    private accountService: AccountService,
     private rsaUtil: RsaUtil,
   ) {}
 
@@ -17,21 +19,19 @@ export class AuthService {
         accessToken: string;
         refreshToken: string;
       }
-    | Account
+    | any
   > {
     try {
-      const { email, password } = authDto;
-
-      const user = await this.AccountModel.findOne({ email });
+      const password = this.rsaUtil.decrypt(authDto.password);
+      const user = await this.accountService.getAccountByEmail(authDto.email)
+      Logger.log("getAccountByEmail for get have user : " + JSON.stringify(user));
 
       if (!user) {
         throw new BadRequestException('User not found');
       }
 
-      const decryptedPassword = this.rsaUtil.decrypt(password);
-
-      if (user.password !== decryptedPassword) {
-        throw new BadRequestException('Invalid credentials');
+      if (this.rsaUtil.decrypt(user.password) !== password) {
+        throw new BadRequestException("Invalid credentials");
       }
 
       return await this.getTokens(user);
@@ -41,10 +41,9 @@ export class AuthService {
     }
   }
 
-  async signUp(authDto: AuthDto): Promise<Partial<Account>> {
+  async signUp(authDto: AuthDto) {
     try {
-      const newAccount = new this.AccountModel(authDto);
-      const savedAccount = await newAccount.save();
+      const savedAccount = await this.accountService.createAccount(authDto)
 
       return savedAccount;
     } catch (err) {
