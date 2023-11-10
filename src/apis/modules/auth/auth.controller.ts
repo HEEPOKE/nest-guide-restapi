@@ -1,12 +1,10 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import {
-  AuthServiceConstant,
-  StatusCodeModel,
-} from 'src/constants/authConstant';
 import { AuthDto, RefreshTokenDto, VerifyTokenDto } from './dto/auth.dto';
 import { JwtAuthGuard } from './guards/jwtAccessGuard';
+import { StatusCodeModel } from 'src/constants/constant';
+import { AuthServiceConstant } from 'src/constants/authConstant';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -120,14 +118,14 @@ export class AuthController {
   }
 
   @Post('signOut')
-  async signout(@Body() accessToken: VerifyTokenDto) {
+  async signOut(@Body() accessToken: VerifyTokenDto) {
     try {
       return {
         status: {
           code: StatusCodeModel.SUCCESS.code,
           message: StatusCodeModel.SUCCESS.message,
           service: AuthServiceConstant.AUTH_SERVICE,
-          description: 'signout',
+          description: 'signOut',
         },
         data: this.authService.signOut(accessToken.access_token),
       };
