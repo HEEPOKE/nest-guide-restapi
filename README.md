@@ -9,7 +9,7 @@ cp .env.example .env
 ## Installation
 
 ```bash
-$ yarn
+yarn
 ```
 
 ## Running the app
@@ -37,5 +37,5 @@ heepoke
 
 ```bash
 #password
-usersHeepoke
+heepoke
 ```
