@@ -16,6 +16,8 @@ model Account {
   tel       String?  @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map(name: "accounts")
 }
 
 model Shop {
@@ -25,4 +27,6 @@ model Shop {
   telephone String?  @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map(name: "shops")
 }
