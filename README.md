@@ -12,6 +12,16 @@ cp .env.example .env
 yarn
 ```
 
+## Mock DB
+
+```bash
+docker network create HEEPOKE
+```
+
+```bash
+docker compose up -d
+```
+
 ## Running the app
 
 ```bash

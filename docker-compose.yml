@@ -12,11 +12,8 @@ services:
     env_file:
       - .env
     networks:
-      - Heepoke
-
-volumes:
-  redis-data:
+      - HEEPOKE
 
 networks:
-  Heepoke:
+  HEEPOKE:
     driver: bridge
