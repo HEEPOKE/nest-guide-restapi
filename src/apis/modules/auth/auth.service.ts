@@ -43,7 +43,7 @@ export class AuthService {
 
   async signUp(authDto: AuthDto) {
     try {
-      const savedAccount = await this.accountService.createAccount(authDto)
+      const savedAccount = await this.accountService.registerAccount(authDto)
 
       return savedAccount;
     } catch (err) {
