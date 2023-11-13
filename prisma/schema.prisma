@@ -7,9 +7,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Prefix {
+  MR
+  MRS
+  MS
+  OTHER
+}
+
 model Account {
   id        Int      @id @default(autoincrement())
-  prefix    String?  @db.VarChar(255)
+  prefix    Prefix?
   email     String   @unique @db.VarChar(255)
   username  String?  @unique @db.VarChar(255)
   password  String?  @db.VarChar(255)
