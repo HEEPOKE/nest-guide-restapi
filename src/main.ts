@@ -21,21 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig.config);
   app.use('apis/docs', swaggerConfig.authenticate);
 
-  SwaggerModule.setup('apis/docs', app, document, {
-    swaggerOptions: {
-      tagsSorter: 'alpha',
-      filter: true,
-      securityDefinitions: {
-        bearerAuth: {
-          type: 'apiKey',
-          name: 'Authorization',
-          scheme: 'bearer',
-          in: 'header',
-        },
-      },
-      security: [{ bearerAuth: [] }],
-    },
-  });
+  SwaggerModule.setup('apis/docs', app, document, swaggerConfig.options);
 
   await app.listen(config.PORT);
 }
