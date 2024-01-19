@@ -18,7 +18,7 @@ const authenticate = () =>
   basicAuth({
     challenge: true,
     users: {
-      heepoke: config.SWAGGER_PASSWORD,
+      admin: '        ',
     },
   });
 

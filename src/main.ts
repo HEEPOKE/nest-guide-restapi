@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
@@ -7,7 +8,7 @@ import config from './config/config';
 import swaggerConfig from './config/swagger';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.enableCors();
   app.use(helmet());
@@ -17,8 +18,8 @@ async function bootstrap() {
       transform: true,
     }),
   );
-
   const document = SwaggerModule.createDocument(app, swaggerConfig.config);
+  app.use('apis/docs', swaggerConfig.authenticate);
 
   SwaggerModule.setup('apis/docs', app, document, {
     swaggerOptions: {
@@ -37,6 +38,5 @@ async function bootstrap() {
   });
 
   await app.listen(config.PORT);
-  console.log(`running on: ${await app.getUrl()}`);
 }
 bootstrap();
