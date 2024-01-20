@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   postgres:
     image: postgres:latest
@@ -9,6 +9,18 @@ services:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
+    env_file:
+      - .env
+    networks:
+      - HEEPOKE
+
+  redis:
+    image: redis:latest
+    container_name: nest-cache
+    ports:
+      - ${REDIS_PORT}:6379
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     env_file:
       - .env
     networks:
