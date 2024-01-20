@@ -1,6 +1,6 @@
 import { StatusModel } from '../StatusModel';
 
-export interface AuthResponse {
+export interface ResponseModel {
   status: StatusModel;
   data: any;
 }

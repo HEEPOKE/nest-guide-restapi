@@ -1,11 +1,15 @@
-import { NestFactory } from '@nestjs/core';
-import { Logger, ValidationPipe } from '@nestjs/common';
+import { NestFactory, Reflector } from '@nestjs/core';
+import {
+  ClassSerializerInterceptor,
+  Logger,
+  ValidationPipe,
+} from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import basicAuth from 'express-basic-auth';
 import { AppModule } from './app.module';
-import config from './config/config';
+import { config } from './config/config';
 import swaggerConfig from './config/swagger';
 
 async function bootstrap() {
@@ -19,6 +23,8 @@ async function bootstrap() {
       transform: true,
     }),
   );
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
+
   const document = SwaggerModule.createDocument(app, swaggerConfig.config);
   app.use(
     ['/apis/docs'],

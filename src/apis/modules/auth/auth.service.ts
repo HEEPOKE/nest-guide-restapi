@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthDto } from './dto/auth.dto';
 import { AccountService } from '../account/account.service';
-import config from '../../../config/config';
+import { config } from '../../../config/config';
 import { RsaUtil } from '../../../utils/rsa';
 
 @Injectable()

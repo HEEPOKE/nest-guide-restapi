@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import * as forge from 'node-forge';
-import config from '../config/config';
+import { config } from '../config/config';
 
 @Module({
   providers: [RsaUtil],

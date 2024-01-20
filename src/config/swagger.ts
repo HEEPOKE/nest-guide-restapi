@@ -1,5 +1,5 @@
 import { DocumentBuilder } from '@nestjs/swagger';
-import config from './config';
+import { config } from './config';
 import { Host } from '../models/enum/host.enum';
 
 const configSwagger = new DocumentBuilder()

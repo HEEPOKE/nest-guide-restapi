@@ -9,7 +9,7 @@ cp .env.example .env
 ## Installation
 
 ```bash
-yarn
+npm i
 ```
 
 ## Mock DB
@@ -26,16 +26,16 @@ docker compose up -d
 
 ```bash
 # development
-$ yarn run start
+$ npm run start
 
 # watch mode
-$ yarn run start:dev
+$ npm run start:dev
 ```
 
 ## Format Code
 
 ```bash
-yarn format
+npm format
 ```
 
 ## Swagger
