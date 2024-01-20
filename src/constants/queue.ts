@@ -2,4 +2,8 @@ const QueueName = {
   MAIN: 'main',
 };
 
-export { QueueName };
+const QueueJob = {
+  MAIN: 'main',
+};
+
+export { QueueName, QueueJob };
