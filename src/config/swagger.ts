@@ -56,7 +56,7 @@ const authenticate = () =>
 const swaggerConfig = {
   config: configSwagger,
   authenticate: authenticate,
-  options
+  options,
 };
 
 export default swaggerConfig;

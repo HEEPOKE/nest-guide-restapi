@@ -5,28 +5,28 @@ import { AuthDto } from '../auth/dto/auth.dto';
 
 @Injectable()
 export class AccountService {
-    constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-    async getAccountByEmail(email:string) {
-        const account = await this.prisma.account.findFirst({
-            where: { email },
-            take: 1
-        })
+  async getAccountByEmail(email: string) {
+    const account = await this.prisma.account.findFirst({
+      where: { email },
+      take: 1,
+    });
 
-        return account
-    }
+    return account;
+  }
 
-    async registerAccount(authDto: AuthDto) {
-        const account = await this.prisma.account.create({
-            data: authDto
-        })
-        return account
-    }
+  async registerAccount(authDto: AuthDto) {
+    const account = await this.prisma.account.create({
+      data: authDto,
+    });
+    return account;
+  }
 
-    async createAccount(accountDto: CreateAccountDto) {
-        const account = await this.prisma.account.create({
-            data: accountDto
-        })
-        return account
-    }
+  async createAccount(accountDto: CreateAccountDto) {
+    const account = await this.prisma.account.create({
+      data: accountDto,
+    });
+    return account;
+  }
 }

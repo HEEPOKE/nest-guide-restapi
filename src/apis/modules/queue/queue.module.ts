@@ -1,3 +1,8 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { QueueName } from '../../../constants/queue';
+import { BullModule } from '@nestjs/bull';
+
 @Module({
   imports: [
     BullModule.forRootAsync({
@@ -12,7 +17,7 @@
       inject: [ConfigService],
     }),
     BullModule.registerQueue({
-      name: QueueName.REWARD_QUEUE,
+      name: QueueName.MAIN,
       prefix: 'reward',
       limiter: { max: 100, duration: 60000 },
       defaultJobOptions: { attempts: 1, backoff: 3000, delay: 2000 },

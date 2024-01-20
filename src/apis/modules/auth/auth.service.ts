@@ -23,15 +23,17 @@ export class AuthService {
   > {
     try {
       const password = this.rsaUtil.decrypt(authDto.password);
-      const user = await this.accountService.getAccountByEmail(authDto.email)
-      Logger.log("getAccountByEmail for get have user : " + JSON.stringify(user));
+      const user = await this.accountService.getAccountByEmail(authDto.email);
+      Logger.log(
+        'getAccountByEmail for get have user : ' + JSON.stringify(user),
+      );
 
       if (!user) {
         throw new BadRequestException('User not found');
       }
 
       if (this.rsaUtil.decrypt(user.password) !== password) {
-        throw new BadRequestException("Invalid credentials");
+        throw new BadRequestException('Invalid credentials');
       }
 
       return await this.getTokens(user);
@@ -43,7 +45,7 @@ export class AuthService {
 
   async signUp(authDto: AuthDto) {
     try {
-      const savedAccount = await this.accountService.registerAccount(authDto)
+      const savedAccount = await this.accountService.registerAccount(authDto);
 
       return savedAccount;
     } catch (err) {

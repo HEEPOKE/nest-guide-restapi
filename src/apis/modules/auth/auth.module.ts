@@ -8,11 +8,7 @@ import { AccountModule } from '../account/account.module';
 import { RsaUtil } from '../../../utils/rsa';
 
 @Module({
-  imports: [
-    JwtModule.register({}),
-    RsaUtil,
-    AccountModule, 
-  ],
+  imports: [JwtModule.register({}), RsaUtil, AccountModule],
   providers: [AuthService, AccessTokenStrategy, RefreshTokenStrategy],
   controllers: [AuthController],
 })
