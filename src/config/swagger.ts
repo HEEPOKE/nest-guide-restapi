@@ -1,5 +1,4 @@
 import { DocumentBuilder } from '@nestjs/swagger';
-import * as basicAuth from 'express-basic-auth';
 import config from './config';
 import { Host } from '../models/enum/host.enum';
 
@@ -45,17 +44,8 @@ const options = {
   },
 };
 
-const authenticate = () =>
-  basicAuth({
-    challenge: true,
-    users: {
-      admin: '        ',
-    },
-  });
-
 const swaggerConfig = {
   config: configSwagger,
-  authenticate: authenticate,
   options,
 };
 

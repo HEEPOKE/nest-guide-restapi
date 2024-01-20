@@ -1,8 +1,9 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
+import basicAuth from 'express-basic-auth';
 import { AppModule } from './app.module';
 import config from './config/config';
 import swaggerConfig from './config/swagger';
@@ -19,10 +20,19 @@ async function bootstrap() {
     }),
   );
   const document = SwaggerModule.createDocument(app, swaggerConfig.config);
-  app.use('apis/docs', swaggerConfig.authenticate);
+  app.use(
+    ['/apis/docs'],
+    basicAuth({
+      challenge: true,
+      users: {
+        admin: '        ',
+      },
+    }),
+  );
 
   SwaggerModule.setup('apis/docs', app, document, swaggerConfig.options);
 
   await app.listen(config.PORT);
+  Logger.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

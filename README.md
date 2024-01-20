@@ -1,4 +1,4 @@
-# Nest-Guide-Restapi
+# Nest-Guide-RestApi
 
 ## Config Environment
 
@@ -42,10 +42,9 @@ yarn format
 
 ```bash
 # user
-heepoke
+admin
 ```
 
-```bash
-#password
-heepoke
-```
+### password
+
+- กด space bar 8 ครั้ง

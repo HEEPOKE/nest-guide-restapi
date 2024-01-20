@@ -10,8 +10,12 @@ const config = {
   SWAGGER_PASSWORD: process.env.SWAGGER_PASSWORD,
   JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
   JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
+  EXPIRE_IN: process.env.EXPIRE_IN,
   PRIVATE_KEY: process.env.PRIVATE_KEY,
   PUBLIC_KEY: process.env.PUBLIC_KEY,
+  REDIS_HOST: process.env.REDIS_HOST,
+  REDIS_PORT: process.env.REDIS_PORT,
+  REDIS_PASSWORD: process.env.REDIS_PASSWORD,
   MIN: 0,
   MAX: 1000000,
 };
