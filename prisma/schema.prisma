@@ -21,6 +21,7 @@ model Account {
   username  String?  @unique @db.VarChar(255)
   password  String?  @db.VarChar(255)
   tel       String?  @db.VarChar(255)
+  isActive  Boolean? @default(true) @map("is_active") @db.Boolean
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
