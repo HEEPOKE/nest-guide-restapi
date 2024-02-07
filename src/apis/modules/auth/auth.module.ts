@@ -7,6 +7,8 @@ import { AccessTokenStrategy } from './strategy/access-token.strategy';
 import { RefreshTokenStrategy } from './strategy/refresh-token.strategy';
 import { AccountModule } from '../account/account.module';
 import { RsaUtil } from '../../../utils/rsa';
+import { ApiKeyStrategy } from './strategy/apiKey.strategy';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
@@ -22,10 +24,16 @@ import { RsaUtil } from '../../../utils/rsa';
       }),
       inject: [ConfigService],
     }),
+    PassportModule,
     RsaUtil,
     AccountModule,
   ],
-  providers: [AuthService, AccessTokenStrategy, RefreshTokenStrategy],
+  providers: [
+    AuthService,
+    AccessTokenStrategy,
+    RefreshTokenStrategy,
+    ApiKeyStrategy,
+  ],
   controllers: [AuthController],
 })
 export class AuthModule {}

@@ -15,6 +15,7 @@ const config = {
   REDIS_HOST: process.env.REDIS_HOST,
   REDIS_PORT: process.env.REDIS_PORT,
   REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+  API_KEY: process.env.API_KEY,
   MIN: 0,
   MAX: 1000000,
 };
@@ -32,6 +33,7 @@ const globalConfig = () => ({
   REDIS_HOST: process.env.REDIS_HOST,
   REDIS_PORT: process.env.REDIS_PORT,
   REDIS_PASSWORD: process.env.REDIS_PASSWORD,
+  API_KEY: process.env.API_KEY,
   MIN: 0,
   MAX: 1000000,
 });
