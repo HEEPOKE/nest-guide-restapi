@@ -48,3 +48,13 @@ admin
 ### password
 
 - กด space bar 8 ครั้ง
+
+## Migrate DB
+
+```bash
+npx prisma migrate dev
+```
+
+```bash
+npx prisma generate
+```

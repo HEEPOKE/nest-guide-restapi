@@ -21,8 +21,8 @@ model Account {
   username  String?  @unique @db.VarChar(255)
   password  String?  @db.VarChar(255)
   tel       String?  @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map(name: "accounts")
 }
@@ -32,8 +32,8 @@ model Shop {
   name      String   @unique
   address   String   @db.Text
   telephone String?  @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map(name: "shops")
 }

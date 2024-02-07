@@ -18,7 +18,7 @@ services:
     image: redis:latest
     container_name: nest-cache
     ports:
-      - ${REDIS_PORT}:6379
+      - ${REDIS_PORT}:${REDIS_PORT}
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
     env_file:
